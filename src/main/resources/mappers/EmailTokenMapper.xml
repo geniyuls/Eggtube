@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jykim.eggtube.mappers.EmailTokenMapper">
+    <insert id="insertEmailToken" parameterType="com.jykim.eggtube.entities.EmailTokenEntity">
+insert into `eggtube`.`email_tokens`
+    (
+        `user_email`, `key`, `created_at`, `expires_at`, `is_used`)
+values (#{userEmail}, #{key}, #{createdAt}, #{expiresAt}, #{isUsed})
+    </insert>
+    <update id="updateEmailToken" parameterType="com.jykim.eggtube.entities.EmailTokenEntity">
+update `eggtube`.`email_tokens`
+set `created_at` = #{createdAt},
+    `expires_at` = #{expiresAt},
+    `is_used` = #{isUsed}
+where `user_email` = #{userEmail}
+and `key` = #{key}
+limit 1
+    </update>
+    <select id="selectEmailTokenByUserEmailAndKey" resultType="com.jykim.eggtube.entities.EmailTokenEntity">
+        select `user_email` as `userEmail`,
+               `key` as `key`,
+               `created_at` as `createdAt`,
+               `expires_at` as `expiresAt`,
+               `is_used` as  `isUsed`
+        from `eggtube`.`email_tokens`
+        where `user_email` = #{userEmail}
+          and `key` = #{key}
+        limit 1
+    </select>
+</mapper>
