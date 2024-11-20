@@ -31,7 +31,7 @@
                `deleted_at` as deletedAt,
                `is_admin` as isAdmin,
                `is_suspended` as isSuspended,
-               `is_verified` as isCerified
+               `is_verified` as isVerified
         from `eggtube`.`users`
         where `email` = #{email}
         limit 1
@@ -46,7 +46,7 @@
                `deleted_at` as deletedAt,
                `is_admin` as isAdmin,
                `is_suspended` as isSuspended,
-               `is_verified` as isCerified
+               `is_verified` as isVerified
         from `eggtube`.`users`
         where `nickname` = #{nickname}
         limit 1
@@ -61,7 +61,7 @@
                `deleted_at` as deletedAt,
                `is_admin` as isAdmin,
                `is_suspended` as isSuspended,
-               `is_verified` as isCerified
+               `is_verified` as isVerified
         from `eggtube`.`users`
         where `contact` = #{contact}
         limit 1
